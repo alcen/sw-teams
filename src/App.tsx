@@ -57,7 +57,10 @@ class App extends React.Component<{}, AppState> {
             <Tab value={TabType.people} label="people" />
             <Tab value={TabType.statistics} label="statistics" />
 
-            <IconButton onClick={this.handleHelpButtonClick}>
+            <IconButton
+              id={Classes.helpIcon}
+              onClick={this.handleHelpButtonClick}
+            >
               <HelpIcon />
             </IconButton>
           </Tabs>

@@ -23,3 +23,9 @@ code {
 #sw-backdrop {
   z-index: 5;
 }
+
+#sw-help-icon {
+  align-self: center;
+  bottom: 0;
+  position: fixed;
+}
