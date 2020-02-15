@@ -48,7 +48,7 @@ class App extends React.Component<{}, AppState> {
         <div className={Classes.app}>
           <Tabs
             orientation="vertical"
-            value={false}
+            value={this.state.selectedTab}
             onChange={this.handleTabChange}
           >
             <Tab value={TabType.narwhal} label="narwhal" />
