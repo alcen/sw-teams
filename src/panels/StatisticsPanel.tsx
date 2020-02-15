@@ -2,7 +2,7 @@ import * as React from 'react';
 import TabPanelProps from './TabPanel';
 import * as Classes from '../Classes';
 
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 const StatisticsPanel: React.FunctionComponent<TabPanelProps> = (props: TabPanelProps) => {
   const logo = require('../logo.svg');

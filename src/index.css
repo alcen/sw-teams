@@ -19,3 +19,7 @@ code {
 .sw-app .sw-tab-panel {
   flex: 1;
 }
+
+#sw-backdrop {
+  z-index: 5;
+}
