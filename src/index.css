@@ -1,6 +1,7 @@
 html, body, #root {
   min-height: 100%;
   height: 100%;
+  overflow: auto;
 }
 
 body {
@@ -19,13 +20,20 @@ code {
 
 .sw-app {
   display: flex;
-  height: inherit;
+  height: 100%;
 }
 
 .sw-app .sw-tabs {
   display: flex;
   height: inherit;
   width: 100%;
+}
+
+.sw-app .sw-tabs .MuiTabs-root.MuiTabs-vertical {
+  position: relative;
+  color: #4f6472;
+  background-color: #042235;
+  height: 100%;
 }
 
 .sw-app .sw-tab-panel {
@@ -45,6 +53,8 @@ code {
   display: inline-block;
   padding: 1%;
   position: relative;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-top-user {
@@ -61,7 +71,7 @@ code {
   display: inline-block;
   padding: 1%;
   position: relative;
-  background-color: #f1f4f8;
+  background-color: #ffffff;
   color: #000000;
 }
 
@@ -79,8 +89,9 @@ code {
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-tab-bar {
   display: inline-block;
   position: relative;
-  background-color: #f1f4f8;
   color: #000000;
+  background-color: #ffffff;
+  box-shadow: unset;
 }
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-tab-bar .sw-teams-tabs {
@@ -99,15 +110,21 @@ code {
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-main .sw-all-teams {
   background-color: #ff9113;
+  position: relative;
+  padding: 5px;
+  margin: 10px;
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .sw-app #sw-backdrop {
   z-index: 5000;
+  color: #ffffff;
 }
 
 .sw-app #sw-help-icon {
   align-self: center;
   bottom: 0;
   position: fixed;
+  color: #4f6472;
 }
 

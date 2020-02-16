@@ -99,9 +99,9 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
                 value={this.state.selectedTab}
                 onChange={this.handleChangeTab}
               >
-                <Tab label="All" />
-                <Tab label="Favourites" />
-                <Tab label="Archived" />
+                <Tab value={TeamPageTab.all} label="All" />
+                <Tab value={TeamPageTab.favourites} label="Favourites" />
+                <Tab value={TeamPageTab.archived} label="Archived" />
               </Tabs>
             </div>
             <div className={Classes.teamsSearch}>
@@ -109,13 +109,13 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
+                placeholder="Search team name…"
               />
             </div>
           </AppBar>
         </div>
         <div className={Classes.teamsMain}>
-          <AllTeams />
+          <AllTeams mode={this.state.selectedTab} />
           <Activity />
         </div>
       </div>

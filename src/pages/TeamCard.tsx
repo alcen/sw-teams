@@ -27,27 +27,48 @@ export interface TeamCardProps {
 const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCardProps) => {
   return (
     <Card
-      style={{ width: '230px' }}
+      style={{
+        margin: '5px',
+        width: '250px'
+      }}
       className={props.isArchived ? Classes.archivedTeam : Classes.normalTeam}
     >
-      <Avatar
-        alt={props.name}
-        variant="rounded"
-        src={props.iconSource}
-        style={{ float: 'left' }}
-      />
-      <span>
-        {props.name}
-      </span>
-      <br />
-      <span>
-        {'Created ' + props.date}
-      </span>
-      <div style={{ float:'right' }} onClick={props.handleFavourite}>
-        {props.isFavourite
-          ? <StarIcon />
-          : <StarBorderIcon />
-        }
+      <div
+        style={{
+          position: 'relative',
+          display: 'inline-block',
+          width: '100%'
+        }}
+      >
+        <div
+          style={{
+            float: 'left',
+            width: '75%'
+          }}
+        >
+          <Avatar
+            alt={props.name}
+            variant="rounded"
+            src={props.iconSource}
+            style={{
+              float: 'left',
+              margin: '3px'
+            }}
+          />
+          <span>
+            {props.name}
+          </span>
+          <br />
+          <span style={{ fontSize: 11 }}>
+            {'Created ' + props.date}
+          </span>
+        </div>
+        <div style={{ float:'right', margin: '5px' }} onClick={props.handleFavourite}>
+          {props.isFavourite
+            ? <StarIcon style={{ color:'yellow' }} />
+            : <StarBorderIcon style={{ color:'grey' }} />
+          }
+        </div>
       </div>
       <br />
       <span style={{ wordWrap: 'break-word' }}>
