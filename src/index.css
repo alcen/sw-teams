@@ -1,3 +1,8 @@
+html, body, #root {
+  min-height: 100%;
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,18 +19,95 @@ code {
 
 .sw-app {
   display: flex;
+  height: inherit;
+}
+
+.sw-app .sw-tabs {
+  display: flex;
+  height: inherit;
+  width: 100%;
 }
 
 .sw-app .sw-tab-panel {
   flex: 1;
 }
 
-#sw-backdrop {
-  z-index: 5;
+.sw-app .sw-tab-panel .sw-teams-page {
+  background-color: #f1f4f8;
+  height: 100%;
 }
 
-#sw-help-icon {
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars {
+  display: grid;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-top-bar {
+  display: inline-block;
+  padding: 1%;
+  position: relative;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-top-user {
+  float: right;
+  padding: 1%;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-top-words {
+  float: left;
+  padding: 1%;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-create-bar {
+  display: inline-block;
+  padding: 1%;
+  position: relative;
+  background-color: #f1f4f8;
+  color: #000000;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-create-bar .sw-teams-create-bar-icon {
+  display: flex;
+  float: left;
+  padding: 1%;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-create-bar .sw-teams-create-bar-create-a-team {
+  float: right;
+  padding: 1%;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-tab-bar {
+  display: inline-block;
+  position: relative;
+  background-color: #f1f4f8;
+  color: #000000;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-tab-bar .sw-teams-tabs {
+  display: flex;
+  float: left;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-tab-bar .sw-teams-search {
+  display: flex;
+  float: right;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-main {
+  display: flex;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-main .sw-all-teams {
+  background-color: #ff9113;
+}
+
+.sw-app #sw-backdrop {
+  z-index: 5000;
+}
+
+.sw-app #sw-help-icon {
   align-self: center;
   bottom: 0;
   position: fixed;
 }
+

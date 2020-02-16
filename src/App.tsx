@@ -22,8 +22,8 @@ interface AppState {
 }
 
 class App extends React.Component<{}, AppState> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       selectedTab: TabType.teams,
       isBackdropOpen: false
@@ -44,8 +44,8 @@ class App extends React.Component<{}, AppState> {
 
   public render() {
     return (
-      <div>
-        <div className={Classes.app}>
+      <div className={Classes.app}>
+        <div className={Classes.tabs}>
           <Tabs
             orientation="vertical"
             value={this.state.selectedTab}

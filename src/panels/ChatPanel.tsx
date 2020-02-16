@@ -15,7 +15,7 @@ const ChatPanel: React.FunctionComponent<TabPanelProps> = (props: TabPanelProps)
       className={Classes.tabPanel}
       hidden={!isShown}
     >
-      {isShown && 
+      {isShown ?
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -30,6 +30,7 @@ const ChatPanel: React.FunctionComponent<TabPanelProps> = (props: TabPanelProps)
             Learn React
           </a>
         </header>
+        : undefined
       }
     </Typography>
   );

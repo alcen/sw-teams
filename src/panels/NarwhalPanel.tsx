@@ -15,7 +15,7 @@ const NarwhalPanel: React.FunctionComponent<TabPanelProps> = (props: TabPanelPro
       className={Classes.tabPanel}
       hidden={!isShown}
     >
-      {isShown && 
+      {isShown ?
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -30,6 +30,7 @@ const NarwhalPanel: React.FunctionComponent<TabPanelProps> = (props: TabPanelPro
             Learn React
           </a>
         </header>
+        : undefined
       }
     </Typography>
   );
