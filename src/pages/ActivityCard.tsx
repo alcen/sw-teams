@@ -8,9 +8,10 @@ import Person from '../util/Person';
 import * as Classes from '../Classes';
 
 export interface ActivityCardProps {
-  action: Action
+  action: Action,
+  key: number,
   time?: string,
-  team: string
+  team: string,
   user: Person
 }
 

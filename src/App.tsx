@@ -3,10 +3,15 @@ import './App.css';
 
 import Backdrop from '@material-ui/core/Backdrop';
 import IconButton from '@material-ui/core/IconButton';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 
 import HelpIcon from '@material-ui/icons/Help';
+import LocationCityIcon from '@material-ui/icons/LocationCity';
+import PeopleIcon from '@material-ui/icons/People';
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
 
 import * as Classes from './Classes';
 import { TabType } from './TabType';
@@ -51,11 +56,18 @@ class App extends React.Component<{}, AppState> {
             value={this.state.selectedTab}
             onChange={this.handleTabChange}
           >
-            <Tab value={TabType.narwhal} label="narwhal" />
-            <Tab value={TabType.chat} label="chat" />
-            <Tab value={TabType.teams} label="teams" />
-            <Tab value={TabType.people} label="people" />
-            <Tab value={TabType.statistics} label="statistics" />
+            <Tab
+              value={TabType.narwhal}
+              icon={
+                <SvgIcon>
+                  <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z" />
+                </SvgIcon>
+              } aria-label='narwhal'
+            />
+            <Tab value={TabType.chat} icon={<QuestionAnswerIcon />} aria-label='chat' />
+            <Tab value={TabType.teams} icon={<LocationCityIcon />} aria-label='teams' />
+            <Tab value={TabType.people} icon={<PeopleIcon />} aria-label='people' />
+            <Tab value={TabType.statistics} icon={<TrendingUpRoundedIcon />} aria-label='statistics' />
 
             <IconButton
               id={Classes.helpIcon}

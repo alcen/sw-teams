@@ -13,12 +13,13 @@ import * as Classes from '../Classes';
 
 
 export interface TeamCardProps {
-  date: string,
+  date?: string,
   description: string,
   handleFavourite: () => void,
   iconSource: string,
   isFavourite: boolean,
   isArchived: boolean,
+  key: number,
   name: string,
   numberOfCampaigns: number,
   numberOfLeads: number
@@ -60,7 +61,7 @@ const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCardProps) 
           </span>
           <br />
           <span style={{ fontSize: 11 }}>
-            {'Created ' + props.date}
+            {props.date ? 'Created ' + props.date : undefined}
           </span>
         </div>
         <div style={{ float:'right', margin: '5px' }} onClick={props.handleFavourite}>
