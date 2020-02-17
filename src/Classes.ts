@@ -3,6 +3,7 @@ export const allTeams = 'sw-all-teams';
 export const archivedTeam = 'sw-archived-team';
 export const backdrop = 'sw-backdrop';
 export const helpIcon = 'sw-help-icon';
+export const loadingScreen = 'sw-loading-screen';
 export const normalTeam = 'sw-normal-team';
 export const tabPanel = 'sw-tab-panel';
 export const tabs = 'sw-tabs';

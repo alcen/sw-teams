@@ -4,15 +4,14 @@ import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 
 import Action from '../util/Action';
+import Activity from '../util/Activity';
 import Person from '../util/Person';
 import * as Classes from '../Classes';
 
+
 export interface ActivityCardProps {
-  action: Action,
-  key: number,
-  time?: string,
-  team: string,
-  user: Person
+  displayedActivity: Activity,
+  key: number
 }
 
 function createActivityMessage(user: Person, action: Action, team: String): JSX.Element {
@@ -41,6 +40,7 @@ function createActivityMessage(user: Person, action: Action, team: String): JSX.
 }
 
 const ActivityCard: React.FunctionComponent<ActivityCardProps> = (props: ActivityCardProps) => {
+  const activity = props.displayedActivity;
   return (
     <Card style={{
         borderRadius: 'unset',
@@ -51,16 +51,16 @@ const ActivityCard: React.FunctionComponent<ActivityCardProps> = (props: Activit
     >
       <span style={{ wordWrap: 'break-word' }}>
         <Avatar
-          src={props.user.avatar}
+          src={activity.user.avatar}
           style={{
             float: 'left',
             margin: '3px',
             marginRight: '5px'
           }}
         />
-        {createActivityMessage(props.user, props.action, props.team)}
+        {createActivityMessage(activity.user, activity.action, activity.team)}
         <br />
-        {props.time}
+        {activity.createdAt}
       </span>
     </Card>
   );

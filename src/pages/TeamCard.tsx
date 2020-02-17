@@ -10,29 +10,27 @@ import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 import * as Classes from '../Classes';
-
+import Team from '../util/Team';
 
 export interface TeamCardProps {
-  date?: string,
-  description: string,
+  displayedTeam: Team,
   handleFavourite: () => void,
-  iconSource: string,
-  isFavourite: boolean,
-  isArchived: boolean,
   key: number,
-  name: string,
-  numberOfCampaigns: number,
-  numberOfLeads: number
 }
 
 const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCardProps) => {
+  const team: Team = props.displayedTeam;
   return (
     <Card
       style={{
         margin: '5px',
         width: '250px'
       }}
-      className={props.isArchived ? Classes.archivedTeam : Classes.normalTeam}
+      className={
+        team.isArchived
+          ? Classes.archivedTeam
+          : Classes.normalTeam
+      }
     >
       <div
         style={{
@@ -48,26 +46,26 @@ const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCardProps) 
           }}
         >
           <Avatar
-            alt={props.name}
+            alt={props.displayedTeam.name}
             variant="rounded"
-            src={props.iconSource}
+            src={props.displayedTeam.iconSource}
             style={{
               float: 'left',
               margin: '3px'
             }}
           />
           <span>
-            {props.name}
+            {team.name}
           </span>
           <br />
           <span style={{ fontSize: 11 }}>
-            {props.date ? 'Created ' + props.date : undefined}
+            {team.createdAt ? 'Created ' + team.createdAt : undefined}
           </span>
         </div>
         <div style={{ float:'right', margin: '5px' }} onClick={props.handleFavourite}>
-          {props.isArchived
+          {team.isArchived
             ? undefined
-            : (props.isFavourite
+            : (team.isFavourite
               ? <StarIcon style={{ color:'yellow' }} />
               : <StarBorderIcon style={{ color:'grey' }} />)
           }
@@ -75,17 +73,17 @@ const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCardProps) 
       </div>
       <br />
       <span style={{ wordWrap: 'break-word' }}>
-        {props.description}
+        {team.description}
       </span>
       <Divider />
       <span>
         <QuestionAnswerIcon />
-        {props.numberOfCampaigns}
+        {team.numberOfCampaigns}
         {' Campaigns'}
       </span>
       <span>
         <PeopleIcon />
-        {props.numberOfLeads}
+        {team.numberOfLeads}
         {' Leads'}
       </span>
     </Card>

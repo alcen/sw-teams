@@ -13,10 +13,14 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import SearchIcon from '@material-ui/icons/Search';
 
-import * as Classes from '../Classes';
 import UserProfile from './UserProfile';
 import AllTeams from './AllTeams';
 import Activity from './Activity';
+import AppData from '../util/AppData';
+import renameKeys from '../util/DataRenamer';
+import ErrorScreen from '../panels/ErrorScreen';
+import LoadingScreen from '../panels/LoadingScreen';
+import * as Classes from '../Classes';
 
 export enum TeamPageTab {
   all = 'all',
@@ -29,13 +33,39 @@ interface TeamPageProps {
 }
 
 interface TeamPageState {
+  didLoadingFail: boolean,
+  data?: AppData,
+  loadProgress: number,
   selectedTab: TeamPageTab
+}
+
+async function loadJsonData(
+  updateProgress: (progress: number) => void,
+  updateData: (loadedData: AppData) => void
+): Promise<any> {
+  updateProgress(10);
+  try {
+    const response = await fetch('../data/data.json');
+    updateProgress(50);
+    const json = await response.json();
+    console.log(json);
+    const loadedData = renameKeys(json) as AppData;
+    updateProgress(100);
+    updateData(loadedData);
+    console.log(loadedData);
+  } catch (e) {
+    updateProgress(0);
+    console.error(e);
+    throw new Error("Could not load JSON from file");
+  }
 }
 
 class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
   constructor(props: TeamPageProps) {
     super(props);
     this.state = {
+      didLoadingFail: false,
+      loadProgress: 0,
       selectedTab: this.props.defaultTab
     }
   }
@@ -44,9 +74,25 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
     this.setState({ ...this.state,  selectedTab: newValue });
   };
 
+  private updateProgress = (progress: number): void => {
+    this.setState({ ...this.state, loadProgress: progress });
+  }
+
+  private updateData = (loadedData: AppData): void => {
+    this.setState({ ...this.state, data: loadedData })
+  }
+
+  public componentDidMount() {
+    loadJsonData(this.updateProgress, this.updateData)
+      .catch(error => {
+        console.error(error);
+        this.setState({ ...this.state, didLoadingFail: true })
+      });
+  }
+
   public render() {
-    return (
-      <div className={Classes.teamsPage}>
+    return this.state.data
+      ? <div className={Classes.teamsPage}>
         <div className={Classes.teamsAllBars}>
           <AppBar className={Classes.teamsTopBar}>
             <div className={Classes.teamsTopWords}>
@@ -115,11 +161,13 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
           </AppBar>
         </div>
         <div className={Classes.teamsMain}>
-          <AllTeams mode={this.state.selectedTab} />
-          <Activity />
+          <AllTeams mode={this.state.selectedTab} teamsToDisplay={this.state.data.teams} />
+          <Activity activitiesToDisplay={this.state.data.activities} />
         </div>
       </div>
-    );
+    : this.state.didLoadingFail
+      ? <ErrorScreen />
+      : <LoadingScreen progress={this.state.loadProgress} />
   }
 };
 
