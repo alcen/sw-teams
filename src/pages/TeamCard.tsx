@@ -65,9 +65,11 @@ const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCardProps) 
           </span>
         </div>
         <div style={{ float:'right', margin: '5px' }} onClick={props.handleFavourite}>
-          {props.isFavourite
-            ? <StarIcon style={{ color:'yellow' }} />
-            : <StarBorderIcon style={{ color:'grey' }} />
+          {props.isArchived
+            ? undefined
+            : (props.isFavourite
+              ? <StarIcon style={{ color:'yellow' }} />
+              : <StarBorderIcon style={{ color:'grey' }} />)
           }
         </div>
       </div>

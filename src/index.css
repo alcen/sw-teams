@@ -70,6 +70,7 @@ code {
 }
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-top-words {
+  margin-top: 10px;
   float: left;
   padding: 1%;
 }
@@ -116,11 +117,22 @@ code {
 }
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-main .sw-all-teams {
-  background-color: #ff9113;
+  background-color: #ffffff;
   position: relative;
   padding: 5px;
   margin: 10px;
   box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-main .sw-all-teams
+.MuiPaper-root.MuiCard-root.sw-normal-team.MuiPaper-elevation1.MuiPaper-rounded {
+  background-color: #ffffff;
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-main .sw-all-teams
+.MuiPaper-root.MuiCard-root.sw-archived-team.MuiPaper-elevation1.MuiPaper-rounded {
+  background-color: #ebeef2;
+  color: 
 }
 
 .sw-app #sw-backdrop {
