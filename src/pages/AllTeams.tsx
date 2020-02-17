@@ -12,16 +12,19 @@ export interface AllTeamsProps {
   teamsToDisplay: Team[],
   numberOfTotalTeams: number,
   mode: TeamPageTab,
-  updateTeams: (newTeams: Team[]) => void
+  updateTeams: (newTeams: Team[]) => void,
+  searchTerm?: string
 }
 
-function getTitle(mode: TeamPageTab): string {
+function getTitle(mode: TeamPageTab, searchTerm?: string): string {
   if (mode === TeamPageTab.all) {
     return "All Teams";
   } else if (mode === TeamPageTab.favourites) {
     return "Favourites";
   } else if (mode === TeamPageTab.archived) {
     return "Archived";
+  } else if (mode === TeamPageTab.search && searchTerm) {
+    return "Search: " + searchTerm;
   } else {
     return "? Teams";
   }
@@ -62,6 +65,19 @@ const AllTeams: React.FunctionComponent<AllTeamsProps> = (props: AllTeamsProps) 
         .map((team, index) => [team, index] as [Team, number])
         .filter(teamPair => teamPair[0].isArchived)
         .map(teamCardConstructor);
+    } else if (props.mode === TeamPageTab.search) {
+      return props.teamsToDisplay
+      .map((team, index) => [team, index] as [Team, number])
+      .filter(teamPair => {
+        const team = teamPair[0];
+        const search = props.searchTerm ? props.searchTerm.toLowerCase() : "";
+        return props.searchTerm
+          ? team.description.toLowerCase().includes(search) ||
+              team.name.toLowerCase().includes(search) ||
+              (team.createdAt && team.createdAt.toLowerCase().includes(search))
+          : true;
+      })
+      .map(teamCardConstructor);
     } else {
       return props.teamsToDisplay
         .map((team, index) => [team, index] as [Team, number])
@@ -84,7 +100,7 @@ const AllTeams: React.FunctionComponent<AllTeamsProps> = (props: AllTeamsProps) 
         }}
       >
         <Typography variant="h6" style={{ float: 'left' }}>
-          {getTitle(props.mode)}
+          {getTitle(props.mode, props.searchTerm)}
         </Typography>
         <Typography variant="h6" style={{ float: 'right' }}>
           Showing {teamCards.length} out of {props.numberOfTotalTeams} teams

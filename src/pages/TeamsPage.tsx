@@ -26,7 +26,8 @@ import * as Classes from '../Classes';
 export enum TeamPageTab {
   all = 'all',
   favourites = 'favourites',
-  archived = 'archived'
+  archived = 'archived',
+  search = 'search'
 }
 
 interface TeamPageProps {
@@ -38,7 +39,9 @@ interface TeamPageState {
   loadProgress: number,
   selectedTab: TeamPageTab,
   data?: AppData,
-  teams?: Team[]
+  teams?: Team[],
+  searchTerm?: string
+  previousTabBeforeSearch?: TeamPageTab
 }
 
 async function loadJsonData(
@@ -89,13 +92,41 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
     this.setState({ ...this.state,  selectedTab: newValue });
   };
 
+  private handleSearch = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    const searchTerm: string = event.target.value;
+    if (searchTerm) {
+      this.setState(prevState => ({
+        ...prevState,
+        selectedTab: TeamPageTab.search,
+        searchTerm,
+        previousTabBeforeSearch: prevState.selectedTab === TeamPageTab.search
+          ? prevState.previousTabBeforeSearch
+          : prevState.selectedTab
+      }));
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        selectedTab: prevState.previousTabBeforeSearch || this.props.defaultTab,
+        searchTerm: undefined
+      }));
+    }
+  };
+
+  private handleClearSearch = () => {
+    this.setState((prevState: TeamPageState) => ({
+      ...prevState,
+      searchTerm: undefined,
+      selectedTab: prevState.previousTabBeforeSearch || this.props.defaultTab
+    }));
+  }
+
   private updateProgress = (progress: number): void => {
     this.setState({ ...this.state, loadProgress: progress });
-  }
+  };
 
   private updateData = (loadedData: AppData): void => {
     this.setState({ ...this.state, data: loadedData })
-  }
+  };
 
   public componentDidMount() {
     loadJsonData(this.updateProgress, this.updateData)
@@ -159,14 +190,26 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
           </AppBar>
           <AppBar className={Classes.teamsTabBar}>
             <div className={Classes.teamsTabs}>
-              <Tabs
-                value={this.state.selectedTab}
-                onChange={this.handleChangeTab}
-              >
-                <Tab value={TeamPageTab.all} label="All" />
-                <Tab value={TeamPageTab.favourites} label="Favourites" />
-                <Tab value={TeamPageTab.archived} label="Archived" />
-              </Tabs>
+              {this.state.selectedTab === TeamPageTab.search
+                ? <div style={{
+                    height: '48px',
+                  }}>
+                    <Button
+                      variant="contained"
+                      onClick={this.handleClearSearch}
+                    >
+                      Clear Search
+                    </Button>
+                  </div>
+                : <Tabs
+                    value={this.state.selectedTab}
+                    onChange={this.handleChangeTab}
+                  >
+                    <Tab value={TeamPageTab.all} label="All" />
+                    <Tab value={TeamPageTab.favourites} label="Favourites" />
+                    <Tab value={TeamPageTab.archived} label="Archived" />
+                  </Tabs>
+              }
             </div>
             <div className={Classes.teamsSearch}>
               <div>
@@ -174,6 +217,7 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
               </div>
               <InputBase
                 placeholder="Search team name…"
+                onChange={this.handleSearch}
               />
             </div>
           </AppBar>
@@ -184,6 +228,7 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
             teamsToDisplay={this.state.data.teams}
             numberOfTotalTeams={this.state.data.teams.length}
             updateTeams={this.handleUpdateTeams}
+            searchTerm={this.state.searchTerm}
           />
           <Activity activitiesToDisplay={this.state.data.activities} />
         </div>
