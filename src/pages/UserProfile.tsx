@@ -7,14 +7,19 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import Person from '../util/Person';
+
+interface UserProfileProps {
+  userToDisplay: Person
+}
 
 interface UserProfileState {
   isOpen: boolean,
   anchorElement?: HTMLElement
 };
 
-class UserProfile extends React.Component<{}, UserProfileState> {
-  constructor(props: {}) {
+class UserProfile extends React.Component<UserProfileProps, UserProfileState> {
+  constructor(props: UserProfileProps) {
     super(props);
     this.state = {
       isOpen: false,
@@ -42,9 +47,12 @@ class UserProfile extends React.Component<{}, UserProfileState> {
     return (
       <div style={{ display: 'inline-flex' }}>
         <Typography variant="h6">
-          Hello, John
+          Hello, {this.props.userToDisplay.name}
         </Typography>
-        <Avatar alt="Remy Sharp" src="" />
+        <Avatar
+          alt={this.props.userToDisplay.name}
+          src={this.props.userToDisplay.avatar}
+        />
         <IconButton onClick={handleOpenMenu}>
           <ArrowDropDownIcon />
         </IconButton>

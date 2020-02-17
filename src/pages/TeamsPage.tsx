@@ -134,11 +134,14 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
             </div>
             <div className={Classes.teamsTopUser}>
               <IconButton>
-                <Badge badgeContent={3} color="secondary">
+                <Badge
+                  badgeContent={this.state.data.currentUser.notificationsCount}
+                  color="secondary"
+                >
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
-              <UserProfile />
+              <UserProfile userToDisplay={this.state.data.currentUser} />
             </div>
           </AppBar>
           <AppBar className={Classes.teamsCreateBar}>
