@@ -17,6 +17,7 @@ import UserProfile from './UserProfile';
 import AllTeams from './AllTeams';
 import Activity from './Activity';
 import AppData from '../util/AppData';
+import Team from '../util/Team';
 import renameKeys from '../util/DataRenamer';
 import ErrorScreen from '../panels/ErrorScreen';
 import LoadingScreen from '../panels/LoadingScreen';
@@ -34,9 +35,10 @@ interface TeamPageProps {
 
 interface TeamPageState {
   didLoadingFail: boolean,
-  data?: AppData,
   loadProgress: number,
-  selectedTab: TeamPageTab
+  selectedTab: TeamPageTab,
+  data?: AppData,
+  teams?: Team[]
 }
 
 async function loadJsonData(
@@ -69,6 +71,19 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
       selectedTab: this.props.defaultTab
     }
   }
+
+  private handleUpdateTeams = (teams: Team[]) => {
+    this.setState((prevState: TeamPageState) => 
+      prevState.data
+        ? ({ ...prevState,
+            data: {
+              activities: prevState.data.activities,
+              currentUser: prevState.data.currentUser,
+              teams
+            }})
+        : prevState
+    );
+  };
 
   private handleChangeTab = (event: React.ChangeEvent<{}>, newValue: TeamPageTab) => {
     this.setState({ ...this.state,  selectedTab: newValue });
@@ -161,7 +176,12 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
           </AppBar>
         </div>
         <div className={Classes.teamsMain}>
-          <AllTeams mode={this.state.selectedTab} teamsToDisplay={this.state.data.teams} />
+          <AllTeams
+            mode={this.state.selectedTab}
+            teamsToDisplay={this.state.data.teams}
+            numberOfTotalTeams={this.state.data.teams.length}
+            updateTeams={this.handleUpdateTeams}
+          />
           <Activity activitiesToDisplay={this.state.data.activities} />
         </div>
       </div>
