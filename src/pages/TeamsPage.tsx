@@ -16,6 +16,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import UserProfile from './UserProfile';
 import AllTeams from './AllTeams';
 import Activity from './Activity';
+import CreateTeamMenu from './CreateTeamMenu';
+
 import AppData from '../util/AppData';
 import Team from '../util/Team';
 import renameKeys from '../util/DataRenamer';
@@ -42,6 +44,7 @@ interface TeamPageState {
   teams?: Team[],
   searchTerm?: string
   previousTabBeforeSearch?: TeamPageTab
+  isCreateTeam: boolean
 }
 
 async function loadJsonData(
@@ -53,11 +56,9 @@ async function loadJsonData(
     const response = await fetch('../data/data.json');
     updateProgress(50);
     const json = await response.json();
-    console.log(json);
     const loadedData = renameKeys(json) as AppData;
     updateProgress(100);
     updateData(loadedData);
-    console.log(loadedData);
   } catch (e) {
     updateProgress(0);
     console.error(e);
@@ -71,7 +72,8 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
     this.state = {
       didLoadingFail: false,
       loadProgress: 0,
-      selectedTab: this.props.defaultTab
+      selectedTab: this.props.defaultTab,
+      isCreateTeam: false 
     }
   }
 
@@ -115,10 +117,49 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
   private handleClearSearch = () => {
     this.setState((prevState: TeamPageState) => ({
       ...prevState,
-      searchTerm: undefined,
+      searchTerm: "",
       selectedTab: prevState.previousTabBeforeSearch || this.props.defaultTab
     }));
   }
+
+  /**
+   * Given an array of Teams, add a new Team to it and
+   * return the resultant array
+   */
+  private addNewTeam(teams: Team[], newTeam: Team) {
+    teams.unshift(newTeam);
+    return teams;
+  }
+
+  /**
+   * Adds a Team to the data in the state
+   */
+  private handleAddTeam = (newTeam: Team) => {
+    this.setState((prevState: TeamPageState) => ({
+      ...prevState,
+      isCreateTeam: false,
+      data: prevState.data
+        ? {
+            ...prevState.data,
+            teams: this.addNewTeam(prevState.data.teams, newTeam)
+          }
+        : undefined
+    }));
+  };
+
+  private openCreateTeamMenu = () => {
+    this.setState((prevState: TeamPageState) => ({
+      ...prevState,
+      isCreateTeam: true
+    }));
+  };
+
+  private closeCreateTeamMenu = () => {
+    this.setState((prevState: TeamPageState) => ({
+      ...prevState,
+      isCreateTeam: false
+    }));
+  };
 
   private updateProgress = (progress: number): void => {
     this.setState({ ...this.state, loadProgress: progress });
@@ -183,7 +224,7 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
               </Typography>
             </div>
             <div className={Classes.teamsCreateATeam}>
-              <Button variant="contained">
+              <Button variant="contained" onClick={this.openCreateTeamMenu}>
                 Create New Team
               </Button>
             </div>
@@ -191,16 +232,7 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
           <AppBar className={Classes.teamsTabBar}>
             <div className={Classes.teamsTabs}>
               {this.state.selectedTab === TeamPageTab.search
-                ? <div style={{
-                    height: '48px',
-                  }}>
-                    <Button
-                      variant="contained"
-                      onClick={this.handleClearSearch}
-                    >
-                      Clear Search
-                    </Button>
-                  </div>
+                ? undefined
                 : <Tabs
                     value={this.state.selectedTab}
                     onChange={this.handleChangeTab}
@@ -212,12 +244,27 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
               }
             </div>
             <div className={Classes.teamsSearch}>
+              {this.state.selectedTab === TeamPageTab.search
+                ? <div style={{
+                    float: 'right',
+                    height: '48px',
+                  }}>
+                    <Button
+                      variant="contained"
+                      onClick={this.handleClearSearch}
+                    >
+                      Clear Search
+                    </Button>
+                  </div>
+                : undefined
+              }
               <div>
                 <SearchIcon />
               </div>
               <InputBase
                 placeholder="Search team name…"
                 onChange={this.handleSearch}
+                value={this.state.searchTerm}
               />
             </div>
           </AppBar>
@@ -232,6 +279,12 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
           />
           <Activity activitiesToDisplay={this.state.data.activities} />
         </div>
+        <CreateTeamMenu
+          handleCloseMenu={this.closeCreateTeamMenu}
+          handleCreateTeam={this.handleAddTeam}
+          hidden={!this.state.isCreateTeam}
+          numberOfTeams={this.state.data.teams.length}
+        />
       </div>
     : this.state.didLoadingFail
       ? <ErrorScreen />

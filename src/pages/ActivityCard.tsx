@@ -6,14 +6,20 @@ import Card from '@material-ui/core/Card';
 import Action from '../util/Action';
 import Activity from '../util/Activity';
 import Person from '../util/Person';
-import * as Classes from '../Classes';
-
 
 export interface ActivityCardProps {
   displayedActivity: Activity,
   key: number
 }
 
+/**
+ * Creates a span element containing an appropriate
+ * message for the ActivityCard
+ * 
+ * @param user The user that performed the action
+ * @param action The action that was performed
+ * @param team The team that the action was performed on
+ */
 function createActivityMessage(user: Person, action: Action, team: String): JSX.Element {
   let description: string = '';
   let end: string = '';

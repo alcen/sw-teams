@@ -2,6 +2,7 @@ export const app = 'sw-app';
 export const allTeams = 'sw-all-teams';
 export const archivedTeam = 'sw-archived-team';
 export const backdrop = 'sw-backdrop';
+export const createTeamMenu = 'sw-create-team-menu';
 export const helpIcon = 'sw-help-icon';
 export const loadingScreen = 'sw-loading-screen';
 export const normalTeam = 'sw-normal-team';
