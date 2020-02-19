@@ -89,7 +89,14 @@ const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCardProps) 
             </span>
           </div>
         </div>
-        <div style={{ float:'right', margin: '5px' }} onClick={props.handleFavourite}>
+        <div
+          onClick={props.handleFavourite}
+          style={{
+            float:'right',
+            marginTop: '16px',
+            marginRight: '16px'
+          }}
+        >
           {team.isArchived
             ? undefined
             : (team.isFavourite

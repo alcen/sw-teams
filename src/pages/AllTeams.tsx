@@ -94,16 +94,11 @@ const AllTeams: React.FunctionComponent<AllTeamsProps> = (props: AllTeamsProps) 
   }
   const teamCards = filterTeams();
 
-  // function to calculate the height based on number of teams
-  const calcHeight = () =>
-    Math.ceil(teamCards.length / 3) * 190.6667 + 116;
-
   return (
     <div
       className={Classes.allTeams}
       style={{
         width: '75%',
-        height: calcHeight() + 'px',
         marginLeft: '32px',
         marginRight: '16px'
       }}

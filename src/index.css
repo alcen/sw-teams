@@ -194,6 +194,13 @@ code {
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-main {
   display: flex;
+  
+  /* the next line ensures different heights for 
+   * the All Teams and Activity panels
+   * 
+   * (for same height, change value to stretch)
+   */
+  align-items: flex-start;
 }
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-main .sw-all-teams {

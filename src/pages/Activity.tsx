@@ -21,15 +21,11 @@ const Activity: React.FunctionComponent<ActivityProps> = (props: ActivityProps) 
   };
   const activityCards = props.activitiesToDisplay.map(activityCardConstructor);
 
-  // function to calculate the height based on number of activities
-  const calcHeight = () => props.activitiesToDisplay.length * 82 + 92;
-
   return (
     <div
       className={Classes.allTeams}
       style={{
         width: '25%',
-        height: calcHeight() + 'px',
         marginLeft: '16px',
         marginRight: '32px'
       }}
