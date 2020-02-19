@@ -1,2 +1,2 @@
-const defaultFont = 'Segoe UI, ProximaNova, Roboto, Helvetica, Arial, sans-serif';
+const defaultFont = 'ProximaNova, Segoe UI, Roboto, Helvetica, Arial, sans-serif';
 export default defaultFont;

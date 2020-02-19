@@ -112,7 +112,7 @@ code {
 .MuiButtonBase-root.MuiIconButton-root .MuiIconButton-label .MuiBadge-badge {
   color: #ffffff;
   background-color: #2995da;
-  font-family: ProximaNova, Roboto, Helvetica, Arial, sans-serif;
+  font-family: ProximaNova, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 11px;
   line-height: 13px;
@@ -236,19 +236,19 @@ code {
 .sw-app .sw-tab-panel .sw-teams-page .sw-create-team-menu .MuiFormControl-root.MuiTextField-root
 .MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl
 .MuiInputBase-input.MuiInput-input {
-  font-family: ProximaNova, Roboto, Helvetica, Arial, sans-serif;
+  font-family: ProximaNova, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* set default font for animated text field labels in Create A Team menu */
 .sw-app .sw-tab-panel .sw-teams-page .sw-create-team-menu .MuiFormControl-root.MuiTextField-root
 .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated {
-  font-family: ProximaNova, Roboto, Helvetica, Arial, sans-serif;
+  font-family: ProximaNova, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* set default font for checkbox labels in Create A Team menu */
 .sw-app .sw-tab-panel .sw-teams-page .sw-create-team-menu .MuiFormGroup-root
 .MuiFormControlLabel-root .MuiTypography-root.MuiFormControlLabel-label {
-  font-family: ProximaNova, Roboto, Helvetica, Arial, sans-serif;
+  font-family: ProximaNova, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
 .sw-app #sw-backdrop {
