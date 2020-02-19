@@ -18,21 +18,21 @@ Hello! Welcome to the SW Frontend Mockup.
 
 * Ability to set favourite teams
 
-![Set teams as favourite](setfavourite.png)
+![Set teams as favourite](https://raw.githubusercontent.com/alcen/sw-teams/master/images/setfavourite.png )
 
 * Working favourites and archived tabs
 
-![Favourites tab](favouritestab.png)
+![Favourites tab](https://raw.githubusercontent.com/alcen/sw-teams/master/images/favouritestab.png)
 
 * Search for a team
 
-![Search for a team](search.png)
+![Search for a team](https://raw.githubusercontent.com/alcen/sw-teams/master/images/search.png)
 
 * Create new teams
 
-![Creating a new team](createateam.png)
+![Creating a new team](https://raw.githubusercontent.com/alcen/sw-teams/master/images/createateam.png)
 
-![New team created successfully!](newteamcreated.png)
+![New team created successfully!](https://raw.githubusercontent.com/alcen/sw-teams/master/images/newteamcreated.png)
 
 ## Credits
 
