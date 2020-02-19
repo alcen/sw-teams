@@ -269,9 +269,10 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
             <div className={Classes.teamsCreateBarIcon}>
               <LocationCityIcon
                 style={{
-                  fontSize: '30px',
+                  fontSize: '35px',
                   color: '#a4a6a8',
-                  marginRight: '9px'
+                  marginRight: '9px',
+                  paddingTop: '2px'
                 }}
               />
               <Typography
@@ -343,7 +344,8 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
                 <div
                   style={{
                     color: '#999999',
-                    marginRight: '15px'
+                    marginRight: '15px',
+                    paddingTop: '7px'
                   }}
                 >
                   <SearchIcon />
