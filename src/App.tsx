@@ -3,7 +3,7 @@ import './App.css';
 
 import Backdrop from '@material-ui/core/Backdrop';
 import IconButton from '@material-ui/core/IconButton';
-import SvgIcon from '@material-ui/core/SvgIcon';
+import Icon from '@material-ui/core/Icon';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 
@@ -20,6 +20,8 @@ import ChatPanel from './panels/ChatPanel';
 import TeamsPanel from './panels/TeamsPanel';
 import PeoplePanel from './panels/PeoplePanel';
 import StatisticsPanel from './panels/StatisticsPanel';
+
+import whaleLogo from './sw-logo-white.svg';
 
 interface AppState {
   selectedTab: TabType
@@ -55,13 +57,25 @@ class App extends React.Component<{}, AppState> {
             orientation="vertical"
             value={this.state.selectedTab}
             onChange={this.handleTabChange}
+            // hide default tab indicator line
+            TabIndicatorProps={{ style: { display: 'none' } }}
           >
             <Tab
               value={TabType.narwhal}
               icon={
-                <SvgIcon>
-                  <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z" />
-                </SvgIcon>
+                <Icon
+                  style={{
+                    display: 'flex'
+                  }}
+                >
+                  <img
+                    src={whaleLogo}
+                    alt='whale'
+                    style={{
+                      width: '24px'
+                    }}
+                  />
+                </Icon>
               } aria-label='narwhal'
             />
             <Tab value={TabType.chat} icon={<QuestionAnswerIcon />} aria-label='chat' />

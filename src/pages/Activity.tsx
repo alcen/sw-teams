@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import * as Classes from '../Classes';
 import ActivityCard from './ActivityCard';
 import ActivityItem from '../util/Activity';
+import defaultFont from '../util/Font';
 
 interface ActivityProps {
   activitiesToDisplay: ActivityItem[]
@@ -24,13 +25,37 @@ const Activity: React.FunctionComponent<ActivityProps> = (props: ActivityProps) 
     <div
       className={Classes.allTeams}
       style={{
-        width: '30%'
+        width: '25%'
       }}
     >
-      <Typography variant="h6">
-        Activity
-      </Typography>
-      <Divider />
+      <div style={{
+          display: 'inline-block', 
+          position: 'relative',
+          width: '100%'
+        }}
+      >
+        <Typography
+          variant="h6"
+          style={{
+            float: 'left',
+            paddingTop: '25px',
+            paddingLeft: '25px',
+            paddingBottom: '17px',
+            fontFamily: defaultFont,
+            fontSize: '18px',
+            lineHeight: '22px'
+          }}
+        >
+          Activity
+        </Typography>
+      </div>
+      <Divider
+        style={{
+          border: '1px solid #efefef',
+          height: '0px',
+          marginBottom: '20px'
+        }}
+      />
       <div>
         {activityCards}
       </div>

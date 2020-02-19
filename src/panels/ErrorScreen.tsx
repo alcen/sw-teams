@@ -1,7 +1,9 @@
 import * as React from 'react';
-import * as Classes from '../Classes';
 
 import Typography from '@material-ui/core/Typography';
+
+import * as Classes from '../Classes';
+import defaultFont from '../util/Font';
 
 const ErrorScreen: React.FunctionComponent<{}> = () => {
   return (
@@ -9,6 +11,9 @@ const ErrorScreen: React.FunctionComponent<{}> = () => {
       component="div"
       role="tabpanel"
       className={Classes.tabPanel}
+      style={{
+        fontFamily: defaultFont
+      }}
     >
       <header className={Classes.loadingScreen}>
         <p>

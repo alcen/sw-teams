@@ -9,6 +9,7 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 
+import AddIcon from '@material-ui/icons/Add';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import SearchIcon from '@material-ui/icons/Search';
@@ -19,8 +20,10 @@ import Activity from './Activity';
 import CreateTeamMenu from './CreateTeamMenu';
 
 import AppData from '../util/AppData';
-import Team from '../util/Team';
 import renameKeys from '../util/DataRenamer';
+import defaultFont from '../util/Font';
+import Team from '../util/Team';
+
 import ErrorScreen from '../panels/ErrorScreen';
 import LoadingScreen from '../panels/LoadingScreen';
 import * as Classes from '../Classes';
@@ -177,6 +180,18 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
       });
   }
 
+  // avoid error: type 'string' not assignable to type 'unset' | ...
+  private unset: 'unset' = 'unset';
+  private tabStyle = {
+    minWidth: 'unset',
+    marginLeft: '25px',
+    fontFamily: defaultFont,
+    fontSize: '18px',
+    lineHeight: '22px',
+    // disable all caps on tabs
+    textTransform: this.unset
+  };
+
   public render() {
     return this.state.data
       ? <div className={Classes.teamsPage}>
@@ -190,6 +205,7 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
                   borderRight: '0.1em solid black',
                   display: 'inline',
                   paddingRight: '5%',
+                  fontFamily: defaultFont
                 }}
               >
                 Narwhal
@@ -198,7 +214,8 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
                 variant="h6"
                 style={{
                   display: 'inline',
-                  paddingLeft: '5%'
+                  paddingLeft: '5%',
+                  fontFamily: defaultFont
                 }}
               >
                 Teams
@@ -219,12 +236,18 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
           <AppBar className={Classes.teamsCreateBar}>
             <div className={Classes.teamsCreateBarIcon}>
               <LocationCityIcon />
-              <Typography variant="h6">
+              <Typography
+                variant="h6"
+                style={{
+                  fontFamily: defaultFont
+                }}
+              >
                   Teams
               </Typography>
             </div>
             <div className={Classes.teamsCreateATeam}>
               <Button variant="contained" onClick={this.openCreateTeamMenu}>
+                <AddIcon style={{ paddingRight: '5px' }} />
                 Create New Team
               </Button>
             </div>
@@ -236,36 +259,47 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
                 : <Tabs
                     value={this.state.selectedTab}
                     onChange={this.handleChangeTab}
+                    TabIndicatorProps={{
+                      style: {
+                        backgroundColor: '#0083e3'
+                      } 
+                    }}
                   >
-                    <Tab value={TeamPageTab.all} label="All" />
-                    <Tab value={TeamPageTab.favourites} label="Favourites" />
-                    <Tab value={TeamPageTab.archived} label="Archived" />
+                    <Tab value={TeamPageTab.all} label="All" style={this.tabStyle} />
+                    <Tab value={TeamPageTab.favourites} label="Favourites" style={this.tabStyle} />
+                    <Tab value={TeamPageTab.archived} label="Archived" style={this.tabStyle} />
                   </Tabs>
               }
             </div>
             <div className={Classes.teamsSearch}>
-              {this.state.selectedTab === TeamPageTab.search
-                ? <div style={{
-                    float: 'right',
-                    height: '48px',
-                  }}>
-                    <Button
-                      variant="contained"
-                      onClick={this.handleClearSearch}
-                    >
-                      Clear Search
-                    </Button>
-                  </div>
-                : undefined
-              }
-              <div>
-                <SearchIcon />
+              <div
+                style={{
+                  display: 'inline-flex'
+                }}
+              >
+                {this.state.selectedTab === TeamPageTab.search
+                  ? <div style={{
+                      float: 'right',
+                      height: '48px',
+                    }}>
+                      <Button
+                        variant="contained"
+                        onClick={this.handleClearSearch}
+                      >
+                        Clear Search
+                      </Button>
+                    </div>
+                  : undefined
+                }
+                <div>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  placeholder="Search team name…"
+                  onChange={this.handleSearch}
+                  value={this.state.searchTerm}
+                />
               </div>
-              <InputBase
-                placeholder="Search team name…"
-                onChange={this.handleSearch}
-                value={this.state.searchTerm}
-              />
             </div>
           </AppBar>
         </div>

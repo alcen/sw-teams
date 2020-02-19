@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import defaultFont from '../util/Font';
 import Person from '../util/Person';
 
 interface UserProfileProps {
@@ -46,7 +47,12 @@ class UserProfile extends React.Component<UserProfileProps, UserProfileState> {
 
     return (
       <div style={{ display: 'inline-flex' }}>
-        <Typography variant="h6">
+        <Typography
+          variant="h6"
+          style={{
+            fontFamily: defaultFont
+          }}
+        >
           Hello, {this.props.userToDisplay.name}
         </Typography>
         <Avatar

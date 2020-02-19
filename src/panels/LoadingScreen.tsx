@@ -1,8 +1,10 @@
 import * as React from 'react';
-import * as Classes from '../Classes';
 
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
+
+import * as Classes from '../Classes';
+import defaultFont from '../util/Font';
 
 export interface LoadingScreenProps {
   progress: number
@@ -14,6 +16,9 @@ const LoadingScreen: React.FunctionComponent<LoadingScreenProps> = (props: Loadi
       component="div"
       role="tabpanel"
       className={Classes.tabPanel}
+      style={{
+        fontFamily: defaultFont
+      }}
     >
       <header className={Classes.loadingScreen}>
         <CircularProgress

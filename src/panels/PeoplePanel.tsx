@@ -1,8 +1,10 @@
 import * as React from 'react';
-import TabPanelProps from './TabPanel';
-import * as Classes from '../Classes';
 
 import Typography from '@material-ui/core/Typography';
+
+import TabPanelProps from './TabPanel';
+import * as Classes from '../Classes';
+import defaultFont from '../util/Font';
 
 const PeoplePanel: React.FunctionComponent<TabPanelProps> = (props: TabPanelProps) => {
   const logo = require('../logo.svg');
@@ -14,6 +16,9 @@ const PeoplePanel: React.FunctionComponent<TabPanelProps> = (props: TabPanelProp
       role="tabpanel"
       className={Classes.tabPanel}
       hidden={!isShown}
+      style={{
+        fontFamily: defaultFont
+      }}
     >
       {isShown ?
         <header className="App-header">

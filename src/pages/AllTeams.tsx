@@ -7,6 +7,7 @@ import * as Classes from '../Classes';
 import TeamCard from './TeamCard';
 import { TeamPageTab } from './TeamsPage';
 import Team from '../util/Team';
+import defaultFont from '../util/Font';
 
 export interface AllTeamsProps {
   teamsToDisplay: Team[],
@@ -16,6 +17,13 @@ export interface AllTeamsProps {
   searchTerm?: string
 }
 
+/**
+ * Gets the title text for the current mode
+ * 
+ * @param mode The mode of the All Teams
+ * @param searchTerm The search term to be displayed
+ *     when in search mode
+ */
 function getTitle(mode: TeamPageTab, searchTerm?: string): string {
   if (mode === TeamPageTab.all) {
     return "All Teams";
@@ -90,7 +98,7 @@ const AllTeams: React.FunctionComponent<AllTeamsProps> = (props: AllTeamsProps) 
     <div
       className={Classes.allTeams}
       style={{
-        width: '70%'
+        width: '75%'
       }}
     >
       <div style={{
@@ -99,14 +107,43 @@ const AllTeams: React.FunctionComponent<AllTeamsProps> = (props: AllTeamsProps) 
           width: '100%'
         }}
       >
-        <Typography variant="h6" style={{ float: 'left' }}>
+        <Typography
+          variant="h6"
+          style={{
+            float: 'left',
+            paddingTop: '25px',
+            paddingLeft: '25px',
+            paddingBottom: '17px',
+            fontFamily: defaultFont,
+            fontSize: '18px',
+            lineHeight: '22px'
+          }}
+        >
           {getTitle(props.mode, props.searchTerm)}
         </Typography>
-        <Typography variant="h6" style={{ float: 'right' }}>
+        <Typography
+          variant="h6"
+          style={{
+            float: 'right',
+            paddingTop: '25px',
+            paddingRight: '25px',
+            paddingBottom: '17px',
+            fontFamily: defaultFont,
+            fontSize: '14px',
+            lineHeight: '17px',
+            color: '#7f7f7f'
+          }}
+        >
           Showing {teamCards.length} out of {props.numberOfTotalTeams} teams
         </Typography>
       </div>
-      <Divider/>
+      <Divider
+        style={{
+          border: '1px solid #efefef',
+          height: '0px',
+          marginBottom: '20px'
+        }}
+      />
       <div style={{
         alignItems: 'center',
         display: 'flex',

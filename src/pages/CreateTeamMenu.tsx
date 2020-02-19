@@ -111,67 +111,96 @@ class CreateTeamMenu extends React.Component<CreateTeamMenuProps, CreateTeamMenu
         }}
       >
         <div className={Classes.createTeamMenu} style={{ backgroundColor: '#ffffff' }}>
-          <IconButton onClick={this.props.handleCloseMenu}>
-            <CloseIcon />
-          </IconButton>
-          <TextField
-            label='Created at (optional)'
-            value={this.state.createdAt}
-            onChange={this.handleChangeText('createdAt')}
-          />
-          <TextField
-            label='Description'
-            value={this.state.description}
-            onChange={this.handleChangeText('description')}
-            error={this.state.hasTriedToSubmit && !this.state.description}
-          />
-          <TextField
-            label='Name'
-            value={this.state.name}
-            onChange={this.handleChangeText('name')}
-            error={this.state.hasTriedToSubmit && !this.state.name}
-          />
-          <TextField
-            label='Icon URL'
-            value={this.state.iconSource}
-            onChange={this.handleChangeText('iconSource')}
-            error={this.state.hasTriedToSubmit && !this.state.iconSource}
-          />
-          <FormGroup>
-            <FormControlLabel
-              control={<Checkbox
-                checked={this.state.isFavourite}
-                onChange={this.handleChangeBoolean('isFavourite')}
-              />}
-              label='Favourite'
-            />
-            <FormControlLabel
-              control={<Checkbox
-                checked={this.state.isArchived}
-                onChange={this.handleChangeBoolean('isArchived')}
-              />}
-              label='Archived'
-            />
-          </FormGroup>
-          <TextField
-            label='Number of campaigns'
-            type='number'
-            value={this.state.numberOfCampaigns}
-            onChange={this.handleChangeNumber('numberOfCampaigns')}
-          />
-          <TextField
-            label='Number of leads'
-            type='number'
-            value={this.state.numberOfLeads}
-            onChange={this.handleChangeNumber("numberOfLeads")}
-          />
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={this.handleSubmit}
-          >
-            Submit
-          </Button>
+          <table>
+            <tr>
+              <td>
+                <IconButton onClick={this.props.handleCloseMenu}>
+                  <CloseIcon />
+                </IconButton>
+              </td>
+              <td>
+                <TextField
+                  label='Created at (optional)'
+                  value={this.state.createdAt}
+                  onChange={this.handleChangeText('createdAt')}
+                />
+              </td>
+              <td>
+                <TextField
+                  label='Description'
+                  value={this.state.description}
+                  onChange={this.handleChangeText('description')}
+                  error={this.state.hasTriedToSubmit && !this.state.description}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>
+                <TextField
+                  label='Name'
+                  value={this.state.name}
+                  onChange={this.handleChangeText('name')}
+                  error={this.state.hasTriedToSubmit && !this.state.name}
+                />
+              </td>
+              <td>
+                <TextField
+                  label='Icon URL'
+                  value={this.state.iconSource}
+                  onChange={this.handleChangeText('iconSource')}
+                  error={this.state.hasTriedToSubmit && !this.state.iconSource}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Checkbox
+                      checked={this.state.isFavourite}
+                      onChange={this.handleChangeBoolean('isFavourite')}
+                    />}
+                    label='Favourite'
+                  />
+                  <FormControlLabel
+                    control={<Checkbox
+                      checked={this.state.isArchived}
+                      onChange={this.handleChangeBoolean('isArchived')}
+                    />}
+                    label='Archived'
+                  />
+                </FormGroup>
+              </td>
+              <td>
+                <TextField
+                  label='Number of campaigns'
+                  type='number'
+                  value={this.state.numberOfCampaigns}
+                  onChange={this.handleChangeNumber('numberOfCampaigns')}
+                />
+                <br />
+                <TextField
+                  label='Number of leads'
+                  type='number'
+                  value={this.state.numberOfLeads}
+                  onChange={this.handleChangeNumber("numberOfLeads")}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td colSpan={3} style={{ textAlign: 'right' }}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={this.handleSubmit}
+                >
+                  Submit
+                </Button>
+              </td>
+            </tr>
+          </table>
         </div>
       </Backdrop>
     );
