@@ -73,7 +73,7 @@ const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCardProps) 
                 color: '#444444'
               }}
             >
-              {team.name}
+              <b>{team.name}</b>
             </span>
             <br />
             <span
@@ -123,20 +123,72 @@ const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCardProps) 
         </span>
       </div>
       <Divider />
-      <span style={{ display: 'inline-flex' }}>
-        <QuestionAnswerIcon style={{ margin: '3px' }} />
-        <span style={{ alignSelf: 'center' }}>
-          {team.numberOfCampaigns}
-          {' Campaigns'}
+      <div
+        style={{
+          display: 'inline-flex',
+          position: 'relative',
+          top: '7px'
+        }}
+      >
+        <span
+          style={{
+            display: 'flex',
+            marginLeft: '16px'
+          }}
+        >
+          <div style={{ display: 'flex' }}>
+            <QuestionAnswerIcon
+              style={{
+                color: '#000000',
+                opacity: 0.3,
+                marginRight: '6px'
+              }}
+            />
+          </div>
+          <span
+            style={{
+              lineHeight: '24px',
+              fontFamily: defaultFont,
+              fontSize: '13px',
+              color: '#000000',
+              mixBlendMode: 'normal',
+              opacity: 0.45
+            }}
+          >
+            {team.numberOfCampaigns}
+            {' Campaigns'}
+          </span>
         </span>
-      </span>
-      <span style={{ display: 'inline-flex' }}>
-        <PeopleIcon style={{ margin: '3px' }} />
-        <span style={{ alignSelf: 'center' }}>
-          {team.numberOfLeads}
-          {' Leads'}
+        <span
+          style={{
+            display: 'flex',
+            marginLeft: '16px'
+          }}
+        >
+          <div style={{ display: 'flex' }}>
+            <PeopleIcon
+              style={{
+                color: '#000000',
+                opacity: 0.3,
+                marginRight: '6px'
+              }}
+            />
+          </div>
+          <span
+            style={{
+              lineHeight: '24px',
+              fontFamily: defaultFont,
+              fontSize: '13px',
+              color: '#000000',
+              mixBlendMode: 'normal',
+              opacity: 0.45
+            }}
+          >
+            {team.numberOfLeads}
+            {' Leads'}
+          </span>
         </span>
-      </span>
+      </div>
     </Card>
   );
 };

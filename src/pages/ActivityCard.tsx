@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 
 import Action from '../util/Action';
 import Activity from '../util/Activity';
+import defaultFont from '../util/Font';
 import Person from '../util/Person';
 
 export interface ActivityCardProps {
@@ -36,7 +37,14 @@ function createActivityMessage(user: Person, action: Action, team: String): JSX.
     console.error('Unknown action in ActivityCard.tsx');
   }
   return (
-    <span>
+    <span
+      style={{
+        fontFamily: defaultFont,
+        fontSize: '14px',
+        lineHeight: '17px',
+        color: '#444444'
+      }}
+    >
       <b>{user.name}</b>
       {description}
       <b>{team}</b>
@@ -52,22 +60,60 @@ const ActivityCard: React.FunctionComponent<ActivityCardProps> = (props: Activit
         borderRadius: 'unset',
         boxShadow: 'unset',
         marginTop: '4px',
-        marginBottom: '4px'
+        marginBottom: '4px',
+        marginLeft: '30px'
       }}
     >
-      <span style={{ wordWrap: 'break-word' }}>
-        <Avatar
-          src={activity.user.avatar}
-          style={{
-            float: 'left',
-            margin: '3px',
-            marginRight: '5px'
-          }}
-        />
-        {createActivityMessage(activity.user, activity.action, activity.team)}
-        <br />
-        {activity.createdAt}
-      </span>
+      <table
+        style={{
+          width: '90%'
+        }}
+      >
+        <tbody>
+          <tr>
+            <td>
+              <span style={{ wordWrap: 'break-word' }}>
+                <Avatar
+                  src={activity.user.avatar}
+                  style={{
+                    float: 'left',
+                    marginRight: '9px'
+                  }}
+                />
+              </span>
+            </td>
+            <td
+              style={{
+                width: '80%'
+              }}
+            >
+              <span>
+                {createActivityMessage(activity.user, activity.action, activity.team)}                
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td />
+            <td>
+              <span
+                style={{
+                  display: 'block',
+                  minWidth: '1px',
+                  minHeight: '21.6667px',
+                  color: '#565656',
+                  mixBlendMode: 'normal',
+                  opacity: 0.5,
+                  fontFamily: defaultFont,
+                  fontSize: '13px',
+                  lineHeight: '16px'
+                }}
+              >
+                {activity.createdAt || ""}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </Card>
   );
 };

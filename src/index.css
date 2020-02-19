@@ -34,6 +34,7 @@ code {
   color: #ffffff;
   background-color: #042235;
   height: 100%;
+  box-shadow: inset -4px 0px 4px rgba(2, 15, 24, 0.569466), inset 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* disabled material UI default opacity setting */
@@ -82,25 +83,44 @@ code {
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars {
   display: grid;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1), 0px 0px 4px rgba(0, 0, 0, 0.05);
 }
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-top-bar {
   display: inline-block;
-  padding: 1%;
   position: relative;
   color: #000000;
   background-color: #ffffff;
+  border-bottom: 1px solid #e2e2e2;
 }
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-top-user {
   float: right;
-  padding: 1%;
+  padding-top: 12px;
+}
+
+/* styles for notification badge icon */
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-top-user
+.MuiButtonBase-root.MuiIconButton-root .MuiIconButton-label {
+  color: #444444;
+  opacity: 0.75;
+}
+
+/* styles for notification badge bubble with number of notifications */
+.sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-top-user
+.MuiButtonBase-root.MuiIconButton-root .MuiIconButton-label .MuiBadge-badge {
+  color: #ffffff;
+  background-color: #2995da;
+  font-family: ProximaNova, Roboto, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 13px;
+  opacity: unset;
+  border: 1.5px solid #ffffff;
 }
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-top-words {
-  margin-top: 10px;
   float: left;
-  padding: 1%;
 }
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-create-bar {
@@ -109,6 +129,7 @@ code {
   position: relative;
   background-color: #ffffff;
   color: #000000;
+  box-shadow: unset;
 }
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-all-bars .sw-teams-create-bar .sw-teams-create-bar-icon {
@@ -178,12 +199,13 @@ code {
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-main .sw-all-teams {
   background-color: #ffffff;
   position: relative;
-  padding: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 20px;
   margin-top: 30px;
-  margin-right: 20px;
-  margin-left: 20px;
   margin-bottom: 30px;
-  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1), 0px 0px 4px rgba(0, 0, 0, 0.05);
 }
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-main .sw-all-teams
@@ -194,12 +216,36 @@ code {
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-main .sw-all-teams
 .MuiPaper-root.MuiCard-root.sw-archived-team.MuiPaper-elevation1.MuiPaper-rounded {
   background-color: #ebeef2;
-  color: 
+}
+
+.sw-app .sw-tab-panel .sw-teams-page .sw-create-team-menu {
+  background-color: #ffffff;
+  padding-right: 32px;
+  padding-bottom: 10px;
+}
+
+/* set default font for text field input in Create A Team menu */
+.sw-app .sw-tab-panel .sw-teams-page .sw-create-team-menu .MuiFormControl-root.MuiTextField-root
+.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl
+.MuiInputBase-input.MuiInput-input {
+  font-family: ProximaNova, Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* set default font for animated text field labels in Create A Team menu */
+.sw-app .sw-tab-panel .sw-teams-page .sw-create-team-menu .MuiFormControl-root.MuiTextField-root
+.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated {
+  font-family: ProximaNova, Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* set default font for checkbox labels in Create A Team menu */
+.sw-app .sw-tab-panel .sw-teams-page .sw-create-team-menu .MuiFormGroup-root
+.MuiFormControlLabel-root .MuiTypography-root.MuiFormControlLabel-label {
+  font-family: ProximaNova, Roboto, Helvetica, Arial, sans-serif;
 }
 
 .sw-app #sw-backdrop {
   z-index: 5000;
-  color: #ffffff;
+  color: #000000;
 }
 
 .sw-app #sw-help-icon {

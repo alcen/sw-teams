@@ -50,22 +50,46 @@ class UserProfile extends React.Component<UserProfileProps, UserProfileState> {
         <Typography
           variant="h6"
           style={{
-            fontFamily: defaultFont
+            fontFamily: defaultFont,
+            fontSize: '14px',
+            lineHeight: '36px',
+            color: '#000000',
+            mixBlendMode: 'normal',
+            opacity: 0.5,
+            paddingLeft: '22px'
           }}
         >
-          Hello, {this.props.userToDisplay.name}
+          <b>Hello, {this.props.userToDisplay.name}</b>
         </Typography>
         <Avatar
           alt={this.props.userToDisplay.name}
           src={this.props.userToDisplay.avatar}
+          style={{
+            width: '36px',
+            height: '36px',
+            paddingLeft: '8px'
+          }}
         />
-        <IconButton onClick={handleOpenMenu}>
-          <ArrowDropDownIcon />
-        </IconButton>
+        <div
+          style={{
+            width: '36px',
+            height: '36px'
+          }}
+        >
+          <IconButton
+            onClick={handleOpenMenu}
+            style={{
+              width: '36px',
+              height: '36px'
+            }}
+          >
+            <ArrowDropDownIcon />
+          </IconButton>
+        </div>
         
         <Menu
           anchorEl={this.state.anchorElement}
-          keepMounted
+          keepMounted={true}
           open={this.state.isOpen}
           onClose={handleCloseMenu}
         >

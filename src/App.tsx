@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
+import Typography from '@material-ui/core/Typography';
 
 import HelpIcon from '@material-ui/icons/Help';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
@@ -14,12 +15,13 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import TrendingUpRoundedIcon from '@material-ui/icons/TrendingUpRounded';
 
 import * as Classes from './Classes';
-import { TabType } from './TabType';
+import TabType from './TabType';
 import NarwhalPanel from './panels/NarwhalPanel';
 import ChatPanel from './panels/ChatPanel';
 import TeamsPanel from './panels/TeamsPanel';
 import PeoplePanel from './panels/PeoplePanel';
 import StatisticsPanel from './panels/StatisticsPanel';
+import defaultFont from './util/Font';
 
 import whaleLogo from './sw-logo-white.svg';
 
@@ -103,7 +105,34 @@ class App extends React.Component<{}, AppState> {
           open={this.state.isBackdropOpen}
           onClick={this.handleOverlayClose}
         >
-          HELLO
+          <div
+            style={{
+              backgroundColor: '#ffffff',
+              width: '30%',
+              height: '200px'
+            }}
+          >
+            <Typography
+              style={{
+                fontFamily: defaultFont,
+                fontSize: '32px',
+                lineHeight: '100px',
+                textAlign: 'center'
+              }}
+            >
+              <b>Help Page</b>
+            </Typography>
+            <Typography
+              style={{
+                fontFamily: defaultFont,
+                fontSize: '24px',
+                lineHeight: '100px',
+                textAlign: 'center'
+              }}
+            >
+              Click anywhere to close
+            </Typography>
+          </div>
         </Backdrop>
       </div>
     );

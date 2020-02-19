@@ -10,7 +10,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
 
 import AddIcon from '@material-ui/icons/Add';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import AssignmentSharpIcon from '@material-ui/icons/AssignmentSharp';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -187,6 +187,7 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
     marginLeft: '25px',
     fontFamily: defaultFont,
     fontSize: '18px',
+    fontWeight: 'bold' as 'bold',
     lineHeight: '22px',
     // disable all caps on tabs
     textTransform: this.unset
@@ -198,57 +199,105 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
         <div className={Classes.teamsAllBars}>
           <AppBar className={Classes.teamsTopBar}>
             <div className={Classes.teamsTopWords}>
-              <Typography
-                variant="h6"
+              <div
                 style={{
-                  // give a line between Narwhal and Teams
-                  borderRight: '0.1em solid black',
-                  display: 'inline',
-                  paddingRight: '5%',
-                  fontFamily: defaultFont
+                  display: 'flex',
+                  height: '100%'
                 }}
               >
-                Narwhal
-              </Typography>
-              <Typography
-                variant="h6"
-                style={{
-                  display: 'inline',
-                  paddingLeft: '5%',
-                  fontFamily: defaultFont
-                }}
-              >
-                Teams
-              </Typography>
+                <div
+                  style={{
+                    // give a line between Narwhal and Teams
+                    borderRight: '1px solid #e2e2e2',
+                    paddingLeft: '40px',
+                    paddingRight: '40px',
+                    paddingTop: '30px',
+                    paddingBottom: '30px'
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    style={{
+                      fontFamily: defaultFont,
+                      fontSize: '18px',
+                      lineHeight: '22px',
+                      color: '#1a1919',
+                      mixBlendMode: 'normal',
+                      opacity: 0.5
+                    }}
+                  >
+                    <b>NARWHAL</b>
+                  </Typography>
+                </div>
+                <div
+                  style={{
+                    paddingLeft: '40px',
+                    paddingTop: '30px'
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    style={{
+                      fontFamily: defaultFont,
+                      fontSize: '18px',
+                      lineHeight: '22px',
+                      color: '#000000'
+                    }}
+                  >
+                    Teams
+                  </Typography>
+                </div>
+              </div>
             </div>
             <div className={Classes.teamsTopUser}>
-              <IconButton>
-                <Badge
-                  badgeContent={this.state.data.currentUser.notificationsCount}
-                  color="secondary"
-                >
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <UserProfile userToDisplay={this.state.data.currentUser} />
+              <div>
+                <IconButton>
+                  <Badge badgeContent={this.state.data.currentUser.notificationsCount}>
+                    <AssignmentSharpIcon
+                      style={{
+                        width: '36px',
+                        height: '36px'
+                      }}
+                    />
+                  </Badge>
+                </IconButton>
+                <UserProfile userToDisplay={this.state.data.currentUser} />
+              </div>
             </div>
           </AppBar>
           <AppBar className={Classes.teamsCreateBar}>
             <div className={Classes.teamsCreateBarIcon}>
-              <LocationCityIcon />
+              <LocationCityIcon
+                style={{
+                  fontSize: '30px',
+                  color: '#a4a6a8',
+                  marginRight: '9px'
+                }}
+              />
               <Typography
                 variant="h6"
                 style={{
-                  fontFamily: defaultFont
+                  fontFamily: defaultFont,
+                  fontSize: '30px',
+                  lineHeight: '36px',
+                  color: '#1a1919'
                 }}
               >
-                  Teams
+                <b>Teams</b>
               </Typography>
             </div>
             <div className={Classes.teamsCreateATeam}>
-              <Button variant="contained" onClick={this.openCreateTeamMenu}>
+              <Button
+                variant="contained"
+                onClick={this.openCreateTeamMenu}
+                style={{
+                  fontFamily: defaultFont,
+                  fontSize: '14px',
+                  lineHeight: '16px'
+                }}
+              >
                 <AddIcon style={{ paddingRight: '5px' }} />
-                Create New Team
+                <b>Create New Team</b>
               </Button>
             </div>
           </AppBar>
@@ -291,13 +340,25 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
                     </div>
                   : undefined
                 }
-                <div>
+                <div
+                  style={{
+                    color: '#999999',
+                    marginRight: '15px'
+                  }}
+                >
                   <SearchIcon />
                 </div>
                 <InputBase
                   placeholder="Search team name…"
                   onChange={this.handleSearch}
                   value={this.state.searchTerm}
+                  style={{
+                    fontFamily: defaultFont,
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    lineHeight: '19px',
+                    color: '#999999'
+                  }}
                 />
               </div>
             </div>

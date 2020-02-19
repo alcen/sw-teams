@@ -1,4 +1,4 @@
-import { TabType } from '../TabType';
+import TabType from '../TabType';
 
 interface TabPanelProps {
   tabValue: TabType
