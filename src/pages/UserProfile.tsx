@@ -46,7 +46,12 @@ class UserProfile extends React.Component<UserProfileProps, UserProfileState> {
     }
 
     return (
-      <div style={{ display: 'inline-flex' }}>
+      <div
+        style={{
+          display: 'inline-flex',
+          paddingRight: '20px'
+        }}
+      >
         <Typography
           variant="h6"
           style={{
