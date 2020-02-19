@@ -56,6 +56,7 @@ code {
 .MuiTabs-flexContainer.MuiTabs-flexContainerVertical
 .MuiButtonBase-root.MuiTab-root.MuiTab-textColorInherit.Mui-selected {
   background-color: #2995da;
+  box-shadow: inset -2px 0px 2px rgba(0, 0, 0, 0.11931);
 }
 
 /* styles for selected Tab's icon */
@@ -194,7 +195,7 @@ code {
 
 .sw-app .sw-tab-panel .sw-teams-page .sw-teams-main {
   display: flex;
-  
+
   /* the next line ensures different heights for 
    * the All Teams and Activity panels
    * 
