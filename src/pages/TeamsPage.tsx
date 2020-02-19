@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 
 import AddIcon from '@material-ui/icons/Add';
 import AssignmentSharpIcon from '@material-ui/icons/AssignmentSharp';
+import CloseIcon from '@material-ui/icons/Close';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -331,12 +332,24 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
                   ? <div style={{
                       float: 'right',
                       height: '48px',
+                      paddingRight: '10px'
                     }}>
                       <Button
                         variant="contained"
                         onClick={this.handleClearSearch}
+                        style={{
+                          fontFamily: defaultFont,
+                          backgroundColor: '#ba1029',
+                          color: '#ffffff',
+                          boxShadow: 'unset',
+                          paddingLeft: '9px',
+                          paddingRight: '11px'
+                        }}
                       >
-                        Clear Search
+                        <CloseIcon style={{ paddingRight: '5px' }} />
+                        <div style={{ paddingBottom: '1px' }}>
+                          <b>Clear</b>
+                        </div>
                       </Button>
                     </div>
                   : undefined
@@ -359,7 +372,8 @@ class TeamsPage extends React.Component<TeamPageProps, TeamPageState> {
                     fontSize: '16px',
                     fontWeight: 'bold',
                     lineHeight: '19px',
-                    color: '#999999'
+                    color: '#999999',
+                    height: '36.3333px'
                   }}
                 />
               </div>

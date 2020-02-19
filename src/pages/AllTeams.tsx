@@ -49,6 +49,14 @@ const AllTeams: React.FunctionComponent<AllTeamsProps> = (props: AllTeamsProps) 
     return () => props.updateTeams(props.teamsToDisplay.map(setFavouriteInTeamArray));
   }
 
+  /**
+   * Constructs TeamCards given the team and original index (for setting favourite
+   * in the original array) and the actual index
+   * 
+   * @param teamAndOriginalIndex An array containing team and original index
+   * @param index The current index in the filtered array
+   *     (only teams to be displayed)
+   */
   const teamCardConstructor = (teamAndOriginalIndex: [Team, number], index: number) => {
     const team = teamAndOriginalIndex[0];
     const originalIndex = teamAndOriginalIndex[1];
