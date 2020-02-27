@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/sw-teams/static/css/main.95d58e22.chunk.css",
-    "main.js": "/sw-teams/static/js/main.4e28b5ea.chunk.js",
-    "main.js.map": "/sw-teams/static/js/main.4e28b5ea.chunk.js.map",
-    "runtime-main.js": "/sw-teams/static/js/runtime-main.5f697c9e.js",
-    "runtime-main.js.map": "/sw-teams/static/js/runtime-main.5f697c9e.js.map",
-    "static/js/2.a3f17213.chunk.js": "/sw-teams/static/js/2.a3f17213.chunk.js",
-    "static/js/2.a3f17213.chunk.js.map": "/sw-teams/static/js/2.a3f17213.chunk.js.map",
-    "index.html": "/sw-teams/index.html",
-    "precache-manifest.39b40a774c3eb7dfa9d74db2b87d1fcd.js": "/sw-teams/precache-manifest.39b40a774c3eb7dfa9d74db2b87d1fcd.js",
-    "service-worker.js": "/sw-teams/service-worker.js",
-    "static/css/main.95d58e22.chunk.css.map": "/sw-teams/static/css/main.95d58e22.chunk.css.map",
-    "static/js/2.a3f17213.chunk.js.LICENSE.txt": "/sw-teams/static/js/2.a3f17213.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/sw-teams/static/media/logo.5d5d9eef.svg",
-    "static/media/sw-logo-white.svg": "/sw-teams/static/media/sw-logo-white.6a5c384b.svg"
+    "main.css": "/static/css/main.95d58e22.chunk.css",
+    "main.js": "/static/js/main.5abe399c.chunk.js",
+    "main.js.map": "/static/js/main.5abe399c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.990a6d47.js",
+    "runtime-main.js.map": "/static/js/runtime-main.990a6d47.js.map",
+    "static/js/2.a3f17213.chunk.js": "/static/js/2.a3f17213.chunk.js",
+    "static/js/2.a3f17213.chunk.js.map": "/static/js/2.a3f17213.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.b5d94059496b44938d8902d0a3d2edc7.js": "/precache-manifest.b5d94059496b44938d8902d0a3d2edc7.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.95d58e22.chunk.css.map": "/static/css/main.95d58e22.chunk.css.map",
+    "static/js/2.a3f17213.chunk.js.LICENSE.txt": "/static/js/2.a3f17213.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg",
+    "static/media/sw-logo-white.svg": "/static/media/sw-logo-white.6a5c384b.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.5f697c9e.js",
+    "static/js/runtime-main.990a6d47.js",
     "static/js/2.a3f17213.chunk.js",
     "static/css/main.95d58e22.chunk.css",
-    "static/js/main.4e28b5ea.chunk.js"
+    "static/js/main.5abe399c.chunk.js"
   ]
 }
